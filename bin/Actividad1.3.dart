@@ -1,65 +1,65 @@
 import 'dart:core';
 import 'dart:io';
 
-var students = <String, int>{};
+var estudiantes = <String, int>{};
 
-String? askForName() {
-  print('Introduce un nombre: ');
+String? preguntarNombre() {
+  print('introduce un nombre: ');
   return stdin.readLineSync();
 }
 
-int? askForGrade() {
-  print('Introduce la nota: ');
-  String? newGrade = stdin.readLineSync();
+int? preguntarNota() {
+  print('introduce la nota: ');
+  String? nuevaNota = stdin.readLineSync();
 
-  if (newGrade != null) {
-    return int.tryParse(newGrade) ?? (print('El número introducido no es válido\n') as int?);
+  if (nuevaNota != null) {
+    return int.tryParse(nuevaNota) ?? (print('el numero introducido no es valido\n') as int?);
   }
   return null;
 }
 
-void addStudent() {
-  String? name = askForName();
-  int? grade = askForGrade();
+void aniadirEstudiante() {
+  String? nombre = preguntarNombre();
+  int? nota = preguntarNota();
 
-  if (name != null && grade != null) {
-    students[name] = grade;
-    print('Estudiante agregado: $name con nota $grade\n');
+  if (nombre != null && nota != null) {
+    estudiantes[nombre] = nota;
+    print('estudiante agregado: $nombre con nota $nota\n');
   } else {
-    print('No se pudo agregar el estudiante');
+    print('no se pudo agregar el estudiante');
   }
 }
 
-void showStudents() {
-  print('Estudiantes:\n');
-  students.forEach((name, grade) {
-    print('$name - $grade\n');
+void imprimirEstudiantes() {
+  print('estudiantes:\n');
+  estudiantes.forEach((nombre, nota) {
+    print('$nombre - $nota\n');
   });
 }
 
-void showMenu() {
-  print('1 para ver todos los estudiantes\n'
-      '2 para agregar un estudiante\n'
-      '3 para salir\n');
+void verMenu() {
+  print('1 .- ver todos los estudiantes\n'
+      '2.- agregar un estudiante\n'
+      '3.- salir\n');
 }
 
 void main() {
   String? input = "";
 
   while (input != "0") {
-    showMenu();
+    verMenu();
     print('---> ');
     input = stdin.readLineSync();
 
     switch (input) {
       case "1":
-        showStudents();
+        imprimirEstudiantes();
         break;
       case "2":
-        addStudent();
+        aniadirEstudiante();
         break;
       case "3":
-        print('Adiós');
+        print('hasta luego');
         break;
     }
   }

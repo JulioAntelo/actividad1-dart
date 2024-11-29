@@ -6,7 +6,7 @@ bool validateAmount() {
   return generosFavoritos.length < 5;
 }
 
-void addGenero(String? nuevoGenero) {
+void aniadirGenero(String? nuevoGenero) {
   if (validateAmount() && nuevoGenero != null) {
     if (generosFavoritos.add(nuevoGenero)) {
       print('añadido $nuevoGenero a tu lista\n');
@@ -18,12 +18,12 @@ void addGenero(String? nuevoGenero) {
   }
 }
 
-String? askForGenre() {
+String? preguntarGenero() {
   print('Añade un genero: ');
   return stdin.readLineSync();
 }
 
-void showGenres() {
+void verGeneros() {
   print('lista de generos favoritos:\n');
   for (String genre in generosFavoritos) {
     print('$genre\n');
@@ -37,16 +37,16 @@ void main() {
     print('1.- ver todos los generos favoritos\n'
         '2.- agregar genero\n'
         '3.- salir\n');
-    print('---> ');
+    print('::: ');
     input = stdin.readLineSync();
 
     switch (input) {
       case "1":
-        showGenres();
+        verGeneros();
         break;
       case "2":
-        String? nuevoGenero = askForGenre();
-        addGenero(nuevoGenero);
+        String? nuevoGenero = preguntarGenero();
+        aniadirGenero(nuevoGenero);
         break;
       case "3":
         print('hasta luego');
